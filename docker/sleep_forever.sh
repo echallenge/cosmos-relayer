@@ -12,7 +12,7 @@ echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMA
 rly chains add -f $CHAINID.json
 done
 
-sleep 20
+sleep 50
 
 rly keys add ibc0 testkey
 rly keys add ibc1 testkey
