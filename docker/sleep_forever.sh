@@ -12,6 +12,7 @@ echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMA
 rly chains add -f $CHAINID.json
 done
 
+sleep 20
 
 rly keys add ibc0 testkey
 rly keys add ibc1 testkey
@@ -31,11 +32,11 @@ rly q bal ibc1
 rly pth gen ibc0 ibc1 demo-path
 
 rly tx full-path demo-path
-
-# rly tx transfer ibc0 ibc1 100token0 true $(rly ch addr ibc1) 
+echo "Channel initiated"
 
 while true
 do
-    echo "sleeping forever"
-    sleep 3600
+	echo "Performing migration from ibc0 to ibc1"
+	rly tx transfer ibc0 ibc1 100token0 true $(rly ch addr ibc1)
+    sleep 120
 done 
