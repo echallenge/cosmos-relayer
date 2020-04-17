@@ -38,5 +38,7 @@ while true
 do
 	echo "Performing migration from ibc0 to ibc1"
 	rly tx transfer ibc0 ibc1 100token0 true $(rly ch addr ibc1)
+	rly q bal ibc0
+	rly q bal ibc1
     sleep 120
 done 
