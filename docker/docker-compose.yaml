@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  ibc0:
+    image: gaia-ibc
+    entrypoint: /usr/bin/start-chain.sh
+    ports:
+      - "8000:8000"
+      - "26657:26657"
+    environment:
+      ID: "0"
+      FAUCETADDRESS: "cosmos19j5q2jk0w7e2al4n0dvrkq8th99ckkzf4z3zu0"
+      FAUCETMNEMONIC: "adjust notice soda ostrich track relax soda crumble analyst absent creek code basic leaf disagree deposit case dirt indicate door thumb gauge trumpet elevator"
+
+  ibc1:
+    image: gaia-ibc
+    entrypoint: /usr/bin/start-chain.sh
+    environment:
+      ID: "1"
+      FAUCETADDRESS: "cosmos1efpetuadqethted77e2uytj4tgsn79378td5a7"
+      FAUCETMNEMONIC: "health laundry orbit assume energy pink cabin alien woman vehicle come enforce broccoli sign income faith loud general segment human when inquiry pizza there"
+
+  client:
+    image: gaia-ibc
+    entrypoint: /usr/bin/sleep_forever.sh 
