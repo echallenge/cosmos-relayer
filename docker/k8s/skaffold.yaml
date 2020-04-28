@@ -1,0 +1,19 @@
+  
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+  artifacts:
+  local: {}
+profiles:
+- name: gaia-goz
+  deploy:
+    kubectl:
+      manifests:
+        - "statefulsets/*"
+        - "configmaps/*"
+
+- name: gaia-goz-service
+  deploy:
+    kubectl:
+      manifests:
+        - "services/*"

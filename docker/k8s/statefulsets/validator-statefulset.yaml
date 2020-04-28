@@ -1,0 +1,75 @@
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: fetchbeacon
+  labels:
+    app: fetchbeacon
+spec:
+  serviceName: "fetchbeacon"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fetchbeacon
+  template:
+    metadata:
+      labels:
+        app: fetchbeacon
+    spec:
+      containers:
+        - name: fetchbeacon
+          image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-102-g6dc0b0a
+          command: ["/usr/bin/start-chain.sh"]
+          env:
+            - name: VALIDATORMNEMONIC
+              valueFrom:
+                configMapKeyRef:
+                  name: fetchbeaconconfigmap
+                  key: VALIDATORMNEMONIC
+
+            - name: FAUCETMNEMONIC
+              valueFrom:
+                configMapKeyRef:
+                  name: fetchbeaconconfigmap
+                  key: FAUCETMNEMONIC
+
+            - name: DENOM
+              valueFrom:
+                configMapKeyRef:
+                  name: fetchbeaconconfigmap
+                  key: DENOM
+
+            - name: CHAINID
+              valueFrom:
+                configMapKeyRef:
+                  name: fetchbeaconconfigmap
+                  key: CHAINID
+
+            - name: DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: fetchbeaconconfigmap
+                  key: DOMAIN
+
+            - name: RLYKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: fetchbeaconconfigmap
+                  key: RLYKEY
+
+          ports:
+            - containerPort: 26657
+            - containerPort: 8000
+
+          volumeMounts:
+            - name: data
+              mountPath: /root/.gaiad/data
+        
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2048G
