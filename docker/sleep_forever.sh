@@ -3,42 +3,36 @@ rly config init
 
 for ID in 0 1
 do
-export DENOM="token${ID}"
-export CHAINID="ibc${ID}"
-export DOMAIN="ibc${ID}"
-export RLYKEY="faucet${ID}"
+export DENOMUSE="${DENOM}${ID}"
+export CHAINIDUSE="${CHAINID}${ID}"
+export DOMAINUSE="${DOMAIN}${ID}"
+export RLYKEYUSE="${RLYKEY}${ID}"
 
-echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMAIN:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOM\",\"default-denom\":\"$DENOM\",\"trusting-period\":\"330h\"}" > $CHAINID.json
-rly chains add -f $CHAINID.json
+echo "{\"key\":\"$RLYKEYUSE\",\"chain-id\":\"$CHAINIDUSE\",\"rpc-addr\":\"http://$DOMAINUSE:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOMUSE\",\"default-denom\":\"$DENOMUSE\",\"trusting-period\":\"330h\"}" > $CHAINIDUSE.json
+rly chains add -f $CHAINIDUSE.json
 done
 
 sleep 50
 
-rly lite init ibc0 -f
-rly lite init ibc1 -f
+for i in 0 1
+do
+	rly lite init fetchBeacon${i} -f
+	rly keys add fetchBeacon${i} testkey
+	rly ch edit fetchBeacon${i} key testkey
+	rly tst request fetchBeacon${i} testkey
+	rly q bal fetchBeacon${i}
+done
 
-rly keys add ibc0 testkey
-rly keys add ibc1 testkey
+rly pth gen fetchBeacon0 transfer fetchBeacon1 transfer demopath
 
-rly ch edit ibc0 key testkey
-rly ch edit ibc1 key testkey
-
-rly tst request ibc0 testkey
-rly tst request ibc1 testkey
-
-rly q bal ibc0
-rly q bal ibc1
-
-rly pth gen ibc0 transfer ibc1 transfer ibc0_ibc1
-
-rly tx full-path ibc0_ibc1
+rly tx full-path demopath
 echo "Channel initiated"
 
 while true
 do
-	echo "Performing migration from ibc0 to ibc1"
-	rly tx transfer ibc0 ibc1 100token0 true $(rly ch addr ibc1)
-	rly q bal ibc0
-	rly q bal ibc1
+	echo "Performing migration from fetchBeacon0 to fetchBeacon1"
+	rly tx transfer fetchBeacon0 fetchBeacon1 "10${DENOM}0" true $(rly ch addr fetchBeacon1)
+	rly q bal fetchBeacon0
+	rly q bal fetchBeacon1
     sleep 120
 done 

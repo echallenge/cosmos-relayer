@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-export DENOM="token${ID}"
-export CHAINID="ibc${ID}"
-export DOMAIN="ibc${ID}"
-export RLYKEY="faucet${ID}"
-
 # Move on to configuring gaia
 gaiad init --chain-id $CHAINID $CHAINID
 # NOTE: ensure that the gaia rpc is open to all connections

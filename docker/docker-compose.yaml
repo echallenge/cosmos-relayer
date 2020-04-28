@@ -8,10 +8,13 @@ services:
       - "8000:8000"
       - "26657:26657"
     environment:
-      ID: "0"
       VALIDATORMNEMONIC: "fringe mail crucial resemble kingdom enforce chicken shock forward destroy run prevent minute heavy mercy alter ordinary plunge trophy two section judge spice tiger"
       FAUCETADDRESS: "cosmos19j5q2jk0w7e2al4n0dvrkq8th99ckkzf4z3zu0"
       FAUCETMNEMONIC: "adjust notice soda ostrich track relax soda crumble analyst absent creek code basic leaf disagree deposit case dirt indicate door thumb gauge trumpet elevator"
+      DENOM: "ufet0"
+      CHAINID: "fetchBeacon0"
+      DOMAIN: "ibc0"
+      RLYKEY: "faucetkey0"
 
   ibc1:
     image: gaia-ibc
@@ -21,7 +24,16 @@ services:
       VALIDATORMNEMONIC: "fog vanish skill accident marriage hollow patient replace collect tide west define note deer puppy consider undo pioneer present scrap wear category ethics idea"
       FAUCETADDRESS: "cosmos1efpetuadqethted77e2uytj4tgsn79378td5a7"
       FAUCETMNEMONIC: "health laundry orbit assume energy pink cabin alien woman vehicle come enforce broccoli sign income faith loud general segment human when inquiry pizza there"
+      DENOM: "ufet1"
+      CHAINID: "fetchBeacon1"
+      DOMAIN: "ibc1"
+      RLYKEY: "faucetkey1"
 
   client:
     image: gaia-ibc
-    entrypoint: /usr/bin/sleep_forever.sh 
+    entrypoint: /usr/bin/sleep_forever.sh
+    environment:
+      DENOM: "ufet"
+      CHAINID: "fetchBeacon"
+      DOMAIN: "ibc"
+      RLYKEY: "faucetkey"
