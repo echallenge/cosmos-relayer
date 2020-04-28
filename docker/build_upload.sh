@@ -38,5 +38,5 @@ then
   docker tag gaia-ibc ${REGISTRY}gaia_goz:latest
 
   docker push ${REGISTRY}gaia_goz:${VERSION}
-  docker push ${REGISTRY}gaia_goz:$latest
+  docker push ${REGISTRY}gaia_goz:latest
 fi

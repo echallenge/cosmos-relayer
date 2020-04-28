@@ -62,7 +62,7 @@ spec:
 
           volumeMounts:
             - name: data
-              mountPath: /root/.gaiad/data
+              mountPath: /root/.gaiad
         
   volumeClaimTemplates:
   - metadata:
