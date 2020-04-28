@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/cosmos/gaia
 
 # Add source files
 RUN git clone https://github.com/cosmos/gaia.git . && \
-    git checkout ibc-alpha
+    git checkout 50be36de941b9410a4b06ec9ce4288b1529c4bd4
 
 # Install minimum necessary dependencies, build Cosmos SDK, remove packages
 RUN apt update && \
@@ -24,7 +24,9 @@ ADD docker/start-chain.sh /usr/bin/start-chain.sh
 # Set working directory for the build
 WORKDIR /go/src/github.com/cosmos/relayer
 
-ADD . .
+
+RUN git clone https://github.com/iqlusioninc/relayer.git . && \
+    git checkout 781026cf46c6d144ab7fcd02d92817cc3d524903
 
 RUN make build
 

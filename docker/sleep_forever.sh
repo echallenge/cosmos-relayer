@@ -14,14 +14,14 @@ done
 
 sleep 50
 
+rly lite init ibc0 -f
+rly lite init ibc1 -f
+
 rly keys add ibc0 testkey
 rly keys add ibc1 testkey
 
 rly ch edit ibc0 key testkey
 rly ch edit ibc1 key testkey
-
-rly lite init ibc0 -f
-rly lite init ibc1 -f
 
 rly tst request ibc0 testkey
 rly tst request ibc1 testkey
@@ -29,9 +29,9 @@ rly tst request ibc1 testkey
 rly q bal ibc0
 rly q bal ibc1
 
-rly pth gen ibc0 ibc1 demo-path
+rly pth gen ibc0 transfer ibc1 transfer ibc0_ibc1
 
-rly tx full-path demo-path
+rly tx full-path ibc0_ibc1
 echo "Channel initiated"
 
 while true
