@@ -1,0 +1,73 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: game-of-zones
+  labels:
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: game-of-zones
+  namespace: game-of-zones
+spec:
+  endpoints:
+  - dnsName:  fetch-goz.sandbox.fetch-ai.com
+    # cloudflare CNAME created for  fetch-goz.fetch.ai -> fetch-goz.sandbox.fetch-ai.com
+    recordTTL: 180
+    recordType: CNAME
+    targets:
+    - gaia.sandbox.fetch-ai.com
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:    
+  name: game-of-zones
+  namespace: game-of-zones
+spec:
+  selector:
+    app: istio-fetch-gaia-ig
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - fetch-goz.sandbox.fetch-ai.com
+    port:
+      name: tcp-validator
+      number: 26657
+      protocol: TCP
+  - hosts:
+    - fetch-goz.sandbox.fetch-ai.com
+    port:
+      name: tcp-status
+      number: 8000
+      protocol: TCP
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: game-of-zones
+  namespace: game-of-zones
+spec:
+  gateways:
+  - game-of-zones
+  hosts:
+  - fetch-goz.sandbox.fetch-ai.com
+  tcp:
+  - match:
+    - port: 26657
+    route:
+    - destination:
+        host: fetchbeacon.game-of-zones.svc.cluster.local
+        port:
+          number: 26657
+  - match:
+    - port: 8000
+    route:
+    - destination:
+        host: fetchbeacon.game-of-zones.svc.cluster.local
+        port:
+          number: 8000
