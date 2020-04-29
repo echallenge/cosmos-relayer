@@ -5,7 +5,7 @@ metadata:
     app: fetchbeacon
   name: fetchbeacon
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: tendermintrpc
     port: 26657
