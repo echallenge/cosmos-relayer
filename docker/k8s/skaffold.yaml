@@ -17,3 +17,15 @@ profiles:
     kubectl:
       manifests:
         - "services/*"
+
+- name: gaia-goz-istio
+  deploy:
+    kubectl:
+      manifests:
+        - "istio/istio.yaml"
+
+- name: gaia-goz-dns
+  deploy:
+    kubectl:
+      manifests:
+        - "istio/dns.yaml"

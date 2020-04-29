@@ -9,20 +9,6 @@ spec:
   finalizers:
   - kubernetes
 ---
-apiVersion: externaldns.k8s.io/v1alpha1
-kind: DNSEndpoint
-metadata:
-  name: game-of-zones
-  namespace: game-of-zones
-spec:
-  endpoints:
-  - dnsName:  fetch-goz.sandbox.fetch-ai.com
-    # cloudflare CNAME created for  fetch-goz.fetch.ai -> fetch-goz.sandbox.fetch-ai.com
-    recordTTL: 180
-    recordType: CNAME
-    targets:
-    - gaia.sandbox.fetch-ai.com
----
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:    
