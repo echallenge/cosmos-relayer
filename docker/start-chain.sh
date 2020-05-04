@@ -26,7 +26,7 @@ then
 	gaiad gentx --name validator --amount 10000000000$DENOM --keyring-backend test
 	gaiad collect-gentxs
 
-	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 800000000000$DENOM &
+	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 100000$DENOM &
 
 	gaiad start
 else

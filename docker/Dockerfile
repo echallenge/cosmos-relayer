@@ -41,6 +41,7 @@ COPY --from=builder /usr/bin/gaiacli /usr/bin/gaiacli
 
 ADD start-chain.sh /usr/bin/start-chain.sh
 ADD sleep_forever.sh /usr/bin/sleep_forever.sh
+ADD ibc_txs.sh /usr/bin/ibc_txs.sh
 
 WORKDIR /
 
