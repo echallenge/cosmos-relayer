@@ -34,5 +34,5 @@ do
 	rly tx transfer fetchBeacon0 fetchBeacon1 "10${DENOM}0" true $(rly ch addr fetchBeacon1)
 	rly q bal fetchBeacon0
 	rly q bal fetchBeacon1
-    sleep 120
+    sleep 1800
 done 
