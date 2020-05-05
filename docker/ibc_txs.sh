@@ -46,5 +46,5 @@ do
 # 	rly tx transfer fetchBeacon stackmybits "5ufet" true $(rly ch addr stackmybits)
 # 	rly q bal fetchBeacon
 # 	rly q bal stackmybits
-#     sleep 1800
+    sleep 1800
 done 
