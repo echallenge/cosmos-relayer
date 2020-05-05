@@ -1,7 +1,7 @@
 # #!/usr/bin/env bash
-apt update && apt install -y wget
+# apt update && apt install -y wget
 
-wget https://gist.githubusercontent.com/harsh-98/befc5e2076807aab102710b06db20567/raw/19b09779ee892d942c7b8a131bec930777d70d8b/chains.json
+# wget https://gist.githubusercontent.com/harsh-98/befc5e2076807aab102710b06db20567/raw/19b09779ee892d942c7b8a131bec930777d70d8b/chains.json
 
 # rly config init
 
