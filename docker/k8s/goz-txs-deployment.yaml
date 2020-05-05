@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goz-txs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: goz-txs
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: goz-txs
+    spec:
+      containers:
+      - image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-119-gf66a443-WIP
+        command: ["/usr/bin/ibc_txs.sh"]
+        name: goz-txs
