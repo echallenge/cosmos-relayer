@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/cosmos/gaia
 
 # Add source files
 RUN git clone https://github.com/cosmos/gaia.git . && \
-    git checkout 50be36de941b9410a4b06ec9ce4288b1529c4bd4
+    git checkout 9f47782515341f65505b25eba5d7ba55f5d091d2
 
 # Install minimum necessary dependencies, build Cosmos SDK, remove packages
 # RUN apt update && \
@@ -25,7 +25,7 @@ WORKDIR /go/src/github.com/cosmos/relayer
 
 
 RUN git clone https://github.com/iqlusioninc/relayer.git . && \
-    git checkout 781026cf46c6d144ab7fcd02d92817cc3d524903
+    git checkout 66855795d3e9cef3c84dcc9fda20d13cb5d6ff4f
 
 RUN make build
 

@@ -14,6 +14,6 @@ spec:
         run: goz-txs
     spec:
       containers:
-      - image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-116-g04526b3
-        command: ["/usr/bin/ibc_txs.sh"]
+      - image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-117-g14a0ab4
+        # command: ["sleep 123456"]
         name: goz-txs
