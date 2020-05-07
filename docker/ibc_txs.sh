@@ -1,4 +1,4 @@
-# #!/usr/bin/env bash
+#!/usr/bin/env bash
 rly config init
 
 echo '{"key":"faucet","chain-id":"fetchBeacon","rpc-addr":"http://fetch-goz.fetch.ai:26657","account-prefix":"cosmos","gas":200000,"gas-prices":"0.025sharedtoken","default-denom":"sharedtoken","trusting-period":"330h"}' > root/chain0.json
