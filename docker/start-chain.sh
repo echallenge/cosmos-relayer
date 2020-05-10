@@ -21,8 +21,8 @@ then
 	rly chains add -f /root/.gaiad/$CHAINID.json
 	rly keys restore $CHAINID $RLYKEY "${FAUCETMNEMONIC}"
 
-	gaiad add-genesis-account $(gaiacli keys show validator -a) 900000000000$DENOM --keyring-backend test
-	gaiad add-genesis-account $(rly chains addr $CHAINID) 900000000000$DENOM --keyring-backend test
+	gaiad add-genesis-account $(gaiacli keys show validator -a) 900000000000$DENOM,900000000000sharedtoken --keyring-backend test
+	gaiad add-genesis-account $(rly chains addr $CHAINID) 900000000000$DENOM,900000000000sharedtoken --keyring-backend test
 	gaiad gentx --name validator --amount 10000000000$DENOM --keyring-backend test
 	gaiad collect-gentxs
 

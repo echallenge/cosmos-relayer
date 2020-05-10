@@ -14,6 +14,6 @@ spec:
         run: goz-txs
     spec:
       containers:
-      - image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-122-g8029f1e
+      - image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-123-g0acd9ff
         command: ["/usr/bin/ibc_txs.sh"]
         name: goz-txs
