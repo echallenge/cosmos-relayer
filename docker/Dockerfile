@@ -25,7 +25,7 @@ WORKDIR /go/src/github.com/cosmos/relayer
 
 
 RUN git clone https://github.com/iqlusioninc/relayer.git . && \
-    git checkout 66855795d3e9cef3c84dcc9fda20d13cb5d6ff4f
+    git checkout 427afec4ed60170d6dcfe0a1c3b25d86ca8433be
 
 RUN make build
 
