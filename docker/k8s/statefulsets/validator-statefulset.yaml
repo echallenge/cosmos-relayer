@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: fetchbeacon
-          image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-124-g012d858
+          image: gcr.io/fetch-ai-sandbox/gaia_goz:v0.1.0-127-g52877bf
           command: ["/usr/bin/start-chain.sh"]
           env:
             - name: VALIDATORMNEMONIC

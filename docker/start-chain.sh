@@ -26,7 +26,7 @@ then
 	gaiad gentx --name validator --amount 10000000000$DENOM --keyring-backend test
 	gaiad collect-gentxs
 
-	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 100000000$DENOM &
+	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 800000000000$DENOM &
 
 	gaiad start
 else
@@ -34,7 +34,7 @@ else
 	echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMAIN:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOM\",\"default-denom\":\"$DENOM\",\"trusting-period\":\"330h\"}" > /root/.gaiad/$CHAINID.json
 	rly chains add -f /root/.gaiad/$CHAINID.json
 	rly keys restore $CHAINID $RLYKEY "${FAUCETMNEMONIC}"
-	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 100000000$DENOM &
+	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 800000000000$DENOM &
 
 	gaiad start
 fi
