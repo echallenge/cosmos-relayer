@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 rly config init
 
-echo '{"key":"faucet","chain-id":"fetchBeacon","rpc-addr":"http://fetch-goz.fetch.ai:26657","account-prefix":"cosmos","gas":200000,"gas-prices":"0.025sharedtoken","default-denom":"sharedtoken","trusting-period":"330h"}' > root/chain0.json
-echo '{"key": "faucet","chain-id": "gameofzoneshub-1a","rpc-addr": "http://35.233.155.199:26657","account-prefix": "cosmos","gas": 200000,"gas-prices": "0.025doubloons","default-denom": "doubloons","trusting-period": "90m"}' > /root/chain1.json
+echo '{"chain_id":"fetchBeacon","node_addr":"tcp://fetch-goz.fetch.ai:26657"}' > root/chain0.json
+echo '{"key": "faucet","chain-id": "gameofzoneshub-2","rpc-addr": "http://35.190.35.11:80","account-prefix": "cosmos","gas": 200000,"gas-prices": "0.025doubloons","default-denom": "doubloons","trusting-period": "90m"}' > /root/chain1.json
 
 
 rly chains add -f /root/chain0.json

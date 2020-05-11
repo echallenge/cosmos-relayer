@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/cosmos/gaia
 
 # Add source files
 RUN git clone https://github.com/cosmos/gaia.git . && \
-    git checkout 9f47782515341f65505b25eba5d7ba55f5d091d2
+    git checkout bde5e9c003256cfb6417d3441889bafd14089e0b
 
 # Install minimum necessary dependencies, build Cosmos SDK, remove packages
 # RUN apt update && \
