@@ -50,4 +50,4 @@ do
 	rly q bal fetchBeacon
 	rly q bal gameofzoneshub-2
     sleep 60
-done 
+done
