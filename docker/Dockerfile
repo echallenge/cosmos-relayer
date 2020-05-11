@@ -35,6 +35,10 @@ RUN cp /go/src/github.com/cosmos/relayer/build/rly /usr/bin/rly
 ###################################################
 FROM ubuntu:focal
 
+RUN apt update && \
+    apt install -y wget && \
+    apt clean
+
 COPY --from=builder /usr/bin/rly /usr/bin/rly
 COPY --from=builder /usr/bin/gaiad /usr/bin/gaiad
 COPY --from=builder /usr/bin/gaiacli /usr/bin/gaiacli
