@@ -8,4 +8,4 @@ gaiad init --chain-id gameofzoneshub-2 fetchgoznode2
 wget https://raw.githubusercontent.com/cosmosdevs/GameOfZones/master/goz-genesis.json && \
 mv goz-genesis.json ~/.gaiad/config/genesis.json
 
-gaiad start --p2p.laddr tcp://$IP:26656 --rpc.laddr tcp://0.0.0.0:2665 --p2p.seeds="d95a9f97e31f36d0a467e6855c71f5e5b8eccf65@34.83.90.172:26656"
+gaiad start --p2p.laddr tcp://$IP:26656 --rpc.laddr tcp://0.0.0.0:26657 --p2p.seeds="d95a9f97e31f36d0a467e6855c71f5e5b8eccf65@34.83.90.172:26656"
