@@ -36,7 +36,7 @@ RUN cp /go/src/github.com/cosmos/relayer/build/rly /usr/bin/rly
 FROM ubuntu:focal
 
 RUN apt update && \
-    apt install -y wget && \
+    apt install -y wget iproute2 && \
     apt clean
 
 COPY --from=builder /usr/bin/rly /usr/bin/rly
