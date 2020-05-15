@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: goz-node
+  labels:
+    app: goz-node
+spec:
+  serviceName: goz-node
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goz-node
+  template:
+    metadata:
+      labels:
+        app: goz-node
+        appkey: goz-node
+    spec:
+      containers:
+        - name: goz-node
+          image: gcr.io/fetch-ai-sandbox/gaia_goz:goz-phase-1b
+          imagePullPolicy: Always
+          command: ["/usr/bin/start-goz-node.sh"]
+
+          volumeMounts:
+            - name: data
+              mountPath: /root/.gaiad/data
+
+          ports:
+            - containerPort: 26656
+            - containerPort: 26657
+
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100G
