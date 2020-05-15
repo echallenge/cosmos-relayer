@@ -17,7 +17,7 @@ then
 	echo "${VALIDATORMNEMONIC}" | gaiacli keys add validator --recover
 	# Generate faucet account
 	rly config init
-	echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMAIN:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOM\",\"default-denom\":\"$DENOM\",\"trusting-period\":\"330h\"}" > /root/.gaiad/$CHAINID.json
+	echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMAIN:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOM\",\"default-denom\":\"$DENOM\",\"trusting-period\":\"11m\"}" > /root/.gaiad/$CHAINID.json
 	rly chains add -f /root/.gaiad/$CHAINID.json
 	rly keys restore $CHAINID $RLYKEY "${FAUCETMNEMONIC}"
 
@@ -31,7 +31,7 @@ then
 	gaiad start
 else
 	rly config init
-	echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMAIN:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOM\",\"default-denom\":\"$DENOM\",\"trusting-period\":\"330h\"}" > /root/.gaiad/$CHAINID.json
+	echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMAIN:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOM\",\"default-denom\":\"$DENOM\",\"trusting-period\":\"11m\"}" > /root/.gaiad/$CHAINID.json
 	rly chains add -f /root/.gaiad/$CHAINID.json
 	rly keys restore $CHAINID $RLYKEY "${FAUCETMNEMONIC}"
 	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 800000000000$DENOM &

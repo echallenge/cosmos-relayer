@@ -2,7 +2,7 @@
 
 IP=$(ip address show eth0 | awk '$1 == "inet" { print $2 }' | cut -d/ -f1)
 
-gaiad init --chain-id gameofzoneshub-2 fetchgoznode2
+gaiad init --chain-id gameofzoneshub-1b fetchgoznode-1b
 
 mv /genesis.json ~/.gaiad/config/genesis.json
 

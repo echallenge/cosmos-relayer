@@ -33,21 +33,21 @@ sleep 5
 
 rly pth gen fetchBeacon transfer gameofzoneshub-2 transfer demopath -f
 
-# s=fetchBeacon && \
-# d=gameofzoneshub-2 && \
-# p=demopath && \
-# rly transact clients $p --debug &> out1.log ; wait && \
-# rly transact connection $p --debug &> out2.log ; wait && \
-# rly transact channel $p --debug &> out3.log ; wait && \
-# rly pth show $p
+s=fetchBeacon && \
+d=gameofzoneshub-2 && \
+p=demopath && \
+rly transact clients $p --debug &> out1.log ; wait && \
+rly transact connection $p --debug &> out2.log ; wait && \
+rly transact channel $p --debug &> out3.log ; wait && \
+rly pth show $p
 rly tx full-path demopath
 echo "TX link verified"
 
 while true
 do
-	echo "Performing migration from fetchBeacon to stackmybits"
-	rly tx transfer fetchBeacon gameofzoneshub-2 "5ufet" true $(rly ch addr gameofzoneshub-2)
-	rly q bal fetchBeacon
-	rly q bal gameofzoneshub-2
-    sleep 60
+	echo "Sleeping"
+	# rly tx transfer fetchBeacon gameofzoneshub-2 "5ufet" true $(rly ch addr gameofzoneshub-2)
+	# rly q bal fetchBeacon
+	# rly q bal gameofzoneshub-2
+    sleep 3600
 done

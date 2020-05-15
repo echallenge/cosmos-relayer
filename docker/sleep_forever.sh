@@ -8,7 +8,7 @@ export CHAINIDUSE="${CHAINID}${ID}"
 export DOMAINUSE="${DOMAIN}${ID}"
 export RLYKEYUSE="${RLYKEY}${ID}"
 
-echo "{\"key\":\"$RLYKEYUSE\",\"chain-id\":\"$CHAINIDUSE\",\"rpc-addr\":\"http://$DOMAINUSE:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOMUSE\",\"default-denom\":\"$DENOMUSE\",\"trusting-period\":\"330h\"}" > $CHAINIDUSE.json
+echo "{\"key\":\"$RLYKEYUSE\",\"chain-id\":\"$CHAINIDUSE\",\"rpc-addr\":\"http://$DOMAINUSE:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOMUSE\",\"default-denom\":\"$DENOMUSE\",\"trusting-period\":\"11m\"}" > $CHAINIDUSE.json
 rly chains add -f $CHAINIDUSE.json
 done
 

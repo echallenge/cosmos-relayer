@@ -47,6 +47,8 @@ ADD start-chain.sh /usr/bin/start-chain.sh
 ADD sleep_forever.sh /usr/bin/sleep_forever.sh
 ADD ibc_txs.sh /usr/bin/ibc_txs.sh
 ADD genesis.json /genesis.json
+ADD start-goz-node.sh /usr/bin/start-goz-node.sh
+
 
 WORKDIR /
 
