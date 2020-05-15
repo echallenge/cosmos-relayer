@@ -36,7 +36,11 @@ then
   
   docker tag gaia-ibc ${REGISTRY}gaia_goz:${VERSION}
   docker tag gaia-ibc ${REGISTRY}gaia_goz:latest
-
+  if [ $1 != "" ]
+  then
+    docker tag gaia-ibc ${REGISTRY}gaia_goz:$1
+    docker push ${REGISTRY}gaia_goz:$
+  fi
   docker push ${REGISTRY}gaia_goz:${VERSION}
   docker push ${REGISTRY}gaia_goz:latest
 fi

@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/cosmos/gaia
 
 # Add source files
 RUN git clone https://github.com/cosmos/gaia.git . && \
-    git checkout bde5e9c003256cfb6417d3441889bafd14089e0b
+    git checkout tags/goz-phase-1
 
 # Install minimum necessary dependencies, build Cosmos SDK, remove packages
 # RUN apt update && \
@@ -25,7 +25,7 @@ WORKDIR /go/src/github.com/cosmos/relayer
 
 
 RUN git clone https://github.com/iqlusioninc/relayer.git . && \
-    git checkout 427afec4ed60170d6dcfe0a1c3b25d86ca8433be
+    git checkout tags/v0.5.2
 
 RUN make build
 
@@ -46,6 +46,7 @@ COPY --from=builder /usr/bin/gaiacli /usr/bin/gaiacli
 ADD start-chain.sh /usr/bin/start-chain.sh
 ADD sleep_forever.sh /usr/bin/sleep_forever.sh
 ADD ibc_txs.sh /usr/bin/ibc_txs.sh
+ADD genesis.json /genesis.json
 
 WORKDIR /
 
