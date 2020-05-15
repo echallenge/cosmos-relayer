@@ -25,13 +25,6 @@ then
   DEVREGISTRY="gcr.io/fetch-ai-sandbox/"
   VERSION=$(git describe --always --dirty=-WIP)
 
-  #Check For WIP
-  if [[ $VERSION == *-WIP ]];
-  then 
-      echo "WIP detected - please commit changes"
-      # exit 1
-  fi
-
   REGISTRY=$DEVREGISTRY
   
   docker tag gaia-ibc ${REGISTRY}gaia_goz:${VERSION}
@@ -39,7 +32,7 @@ then
   if [ $1 != "" ]
   then
     docker tag gaia-ibc ${REGISTRY}gaia_goz:$1
-    docker push ${REGISTRY}gaia_goz:$
+    docker push ${REGISTRY}gaia_goz:$1
   fi
   docker push ${REGISTRY}gaia_goz:${VERSION}
   docker push ${REGISTRY}gaia_goz:latest
