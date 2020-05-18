@@ -27,7 +27,7 @@ echo "Selected accname account as default for both chains"
 sleep 5
 
 rly tst request fetchBeacon-1b accname
-rly tst request gameofzoneshub-1a accname
+rly tst request gameofzoneshub-1b accname
 echo "Requested funds from both chains.sh"
 sleep 5
 
@@ -35,11 +35,11 @@ rly pth gen fetchBeacon-1b transfer gameofzoneshub-1b transfer demopath -f
 
 # s=fetchBeacon-1b && \
 # d=gameofzoneshub-1b && \
-# p=demopath && \
-# rly transact clients $p --debug &> out1.log ; wait && \
-# rly transact connection $p --debug &> out2.log ; wait && \
-# rly transact channel $p --debug &> out3.log ; wait && \
-# rly pth show $p
+p=demopath && \
+rly transact clients $p --debug &> out1.log ; wait && \
+rly transact connection $p --debug &> out2.log ; wait && \
+rly transact channel $p --debug &> out3.log ; wait && \
+rly pth show $p
 rly tx full-path demopath
 echo "TX link verified"
 
