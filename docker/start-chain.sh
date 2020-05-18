@@ -8,7 +8,7 @@ then
 	# Move on to configuring gaia
 	gaiad init --chain-id $CHAINID $CHAINID
 	# NOTE: ensure that the gaia rpc is open to all connections
-	sed -i 's#tcp://127.0.0.1:26657#tcp://0.0.0.0:26657#g' ~/.gaiad/config/config.toml
+	# sed -i 's#tcp://127.0.0.1:26657#tcp://0.0.0.0:26657#g' ~/.gaiad/config/config.toml
 	sed -i "s/stake/$DENOM/g" ~/.gaiad/config/genesis.json
 	sed -i 's/pruning = "syncable"/pruning = "nothing"/g' ~/.gaiad/config/app.toml
 
@@ -28,7 +28,7 @@ then
 
 	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 800000000000$DENOM &
 
-	gaiad start
+	gaiad start --rpc.laddr tcp://0.0.0.0:26657
 else
 	rly config init
 	echo "{\"key\":\"$RLYKEY\",\"chain-id\":\"$CHAINID\",\"rpc-addr\":\"http://$DOMAIN:26657\",\"account-prefix\":\"cosmos\",\"gas\":200000,\"gas-prices\":\"0.025$DENOM\",\"default-denom\":\"$DENOM\",\"trusting-period\":\"11m\"}" > /root/.gaiad/$CHAINID.json
@@ -36,5 +36,5 @@ else
 	rly keys restore $CHAINID $RLYKEY "${FAUCETMNEMONIC}"
 	sleep 30 && rly testnets faucet $CHAINID $RLYKEY 800000000000$DENOM &
 
-	gaiad start
+	gaiad start --rpc.laddr tcp://0.0.0.0:26657
 fi
