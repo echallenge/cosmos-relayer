@@ -49,5 +49,5 @@ do
 	rly q bal fetchBeacon-1b
 	rly q bal gameofzoneshub-1b
 	echo "Sleeping"
-    sleep 640
+    sleep 480
 done
