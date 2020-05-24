@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: goz-node
-          image: gcr.io/fetch-ai-sandbox/gaia_goz:goz-phase-1b
+          image: gcr.io/fetch-ai-sandbox/gaia_goz:goz-phase-2
           imagePullPolicy: Always
           command: ["/usr/bin/start-goz-node.sh"]
 

@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/cosmos/gaia
 
 # Add source files
 RUN git clone https://github.com/cosmos/gaia.git . && \
-    git checkout tags/goz-phase-1
+    git checkout tags/goz-phase-2
 
 # Install minimum necessary dependencies, build Cosmos SDK, remove packages
 # RUN apt update && \
@@ -25,7 +25,7 @@ WORKDIR /go/src/github.com/cosmos/relayer
 
 
 RUN git clone https://github.com/iqlusioninc/relayer.git . && \
-    git checkout tags/v0.5.2
+    git checkout tags/v0.5.4
 
 RUN make build
 
@@ -36,7 +36,7 @@ RUN cp /go/src/github.com/cosmos/relayer/build/rly /usr/bin/rly
 FROM ubuntu:focal
 
 RUN apt update && \
-    apt install -y wget iproute2 && \
+    apt install -y wget iproute2 jq curl && \
     apt clean
 
 COPY --from=builder /usr/bin/rly /usr/bin/rly
@@ -46,7 +46,6 @@ COPY --from=builder /usr/bin/gaiacli /usr/bin/gaiacli
 ADD start-chain.sh /usr/bin/start-chain.sh
 ADD sleep_forever.sh /usr/bin/sleep_forever.sh
 ADD ibc_txs.sh /usr/bin/ibc_txs.sh
-ADD genesis.json /genesis.json
 ADD start-goz-node.sh /usr/bin/start-goz-node.sh
 
 
