@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: fetchbeacon
-          image: gcr.io/fetch-ai-sandbox/gaia_goz:goz-phase-1b
+          image: gcr.io/fetch-ai-sandbox/gaia_goz:goz-phase-2
           imagePullPolicy: Always
           command: ["/usr/bin/start-chain.sh"]
           env:

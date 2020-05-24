@@ -25,12 +25,12 @@ spec:
       name: tcp-validator
       number: 26657
       protocol: TCP
-  - hosts:
-    - fetch-goz.sandbox.fetch-ai.com
-    port:
-      name: tcp-status
-      number: 8000
-      protocol: TCP
+  # - hosts:
+  #   - fetch-goz.sandbox.fetch-ai.com
+  #   port:
+  #     name: tcp-status
+  #     number: 8000
+  #     protocol: TCP
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -50,10 +50,10 @@ spec:
         host: fetchbeacon.game-of-zones.svc.cluster.local
         port:
           number: 26657
-  - match:
-    - port: 8000
-    route:
-    - destination:
-        host: fetchbeacon.game-of-zones.svc.cluster.local
-        port:
-          number: 8000
+  # - match:
+  #   - port: 8000
+  #   route:
+  #   - destination:
+  #       host: fetchbeacon.game-of-zones.svc.cluster.local
+  #       port:
+  #         number: 8000
